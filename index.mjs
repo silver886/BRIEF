@@ -85,7 +85,7 @@ new Promise(async () => {
                         (p, c) =>
                            p
                               ? p
-                              : `"${c.name} #${Buffer.from(c.address).toString('base64')}#" <${c.address?.replace(/@/gu, '_at_').replace(/\./gu, '_')}@${get('USER', {envKeysFile: get('DOTENV')}).replace(/.*?@/gu, '')}>`,
+                              : `"${c.name || c.address} #${Buffer.from(c.address).toString('base64')}#" <${c.address?.replace(/@/gu, '_at_').replace(/\./gu, '_')}@${get('USER', {envKeysFile: get('DOTENV')}).replace(/.*?@/gu, '')}>`,
                         '',
                      ),
                      to: [
