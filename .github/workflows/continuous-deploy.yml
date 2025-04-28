@@ -1,0 +1,24 @@
+name: Continuous deploy
+
+on:
+  push:
+
+jobs:
+  release-nightly:
+    name: Release nightly
+    permissions:
+      contents: read
+      packages: write
+    uses: silver886/github-actions/.github/workflows/release-oci.yaml@master
+    with:
+      image_tags: '["${{ github.ref_name }}","${{ github.sha }}"]'
+
+  release-latest:
+    name: Release latest
+    if: ${{ github.ref == 'refs/heads/master' }}
+    permissions:
+      contents: read
+      packages: write
+    uses: silver886/github-actions/.github/workflows/release-oci.yaml@master
+    with:
+      image_tags: '["latest"]'
