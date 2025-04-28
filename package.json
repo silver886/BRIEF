@@ -1,0 +1,14 @@
+{
+	"dependencies": {
+		"@dotenvx/dotenvx": "^1.41.0",
+		"imapflow": "^1.0.184",
+		"mailparser": "^3.7.2",
+		"nodemailer": "^6.10.1"
+	},
+	"devDependencies": {
+		"@types/imapflow": "^1.0.20",
+		"@types/mailparser": "^3.4.5",
+		"@types/nodemailer": "^6.4.17",
+		"esbuild": "^0.25.2"
+	}
+}
