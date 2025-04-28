@@ -25,10 +25,8 @@ RUN pnpm esbuild index.mjs --bundle --outdir=dist --platform=node
 ###########################################################################
 FROM node:22-alpine
 
-# COPY --from=base /var/workdir/.env /var/workdir/
+COPY --from=base /var/workdir/.env /var/workdir/
 COPY --from=bundle /var/workdir/dist/ /var/workdir/
-
-RUN echo ${TEST} > test
 
 WORKDIR /var/workdir/
 
