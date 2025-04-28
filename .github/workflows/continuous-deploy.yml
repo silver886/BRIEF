@@ -22,3 +22,15 @@ jobs:
     uses: silver886/github-actions/.github/workflows/release-oci.yaml@master
     with:
       image_tags: '["latest"]'
+
+  deploy-latest:
+    name: Release latest
+    needs: release-latest
+    uses: silver886/github-actions/.github/workflows/deploy-cloudflare-truenas.yaml@master
+    with:
+      uri: ${{ vars.URI }}
+      client_id: ${{ vars.CLIENT_ID }}
+      apps: ${{ vars.APPS }}
+    secrets:
+      client_secret: ${{ secrets.CLIENT_SECRET }}
+      api_key: ${{ secrets.API_KEY }}
