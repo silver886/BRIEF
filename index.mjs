@@ -55,6 +55,16 @@ new Promise(async () => {
    );
 
    while (true) {
+      console.error('reclaiming, if any...');
+      const junkLock = await imap.getMailboxLock(
+         get('SPAM', {envKeysFile: get('DOTENV')}),
+      );
+      await imap.messageMove(
+         '1:*',
+         get('MAILBOX', {envKeysFile: get('DOTENV')}),
+      );
+      junkLock.release();
+
       console.error('checking...');
       const fetchLock = await imap.getMailboxLock(
          get('MAILBOX', {envKeysFile: get('DOTENV')}),
