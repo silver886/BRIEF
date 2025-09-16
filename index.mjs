@@ -170,7 +170,7 @@ new Promise(async () => {
       await Promise.all(
          emails.map((v) =>
             imap.messageFlagsAdd(
-               {header: {'message-id': v.messageId}},
+               {header: {received: v.headers.get('received')[0]}},
                '\\Seen',
             ),
          ),
