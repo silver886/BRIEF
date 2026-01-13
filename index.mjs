@@ -143,12 +143,12 @@ new Promise(async () => {
                )
                .map((v) => ({
                   ...v,
-                  subject: v.subject.replace(/^#.+#/gu, ''),
+                  subject: v.subject.replace(/^.*?#.+?#/gu, ''),
                   to: ((address) =>
                      address.includes('@')
                         ? address
                         : Buffer.from(address, 'base64').toString())(
-                     v.subject.replace(/^#(.+)#.*$/gu, '$1'),
+                     v.subject.replace(/^.*?#(.+?)#.*$/gu, '$1'),
                   ),
                }))
                .filter((v) => v.to.includes('@'))
