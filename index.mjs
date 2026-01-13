@@ -151,6 +151,7 @@ new Promise(async () => {
                      v.subject.replace(/^#(.+)#.*$/gu, '$1'),
                   ),
                }))
+               .filter((v) => v.to)
                .map((v) =>
                   smtp.sendMail({
                      from: get('USER', {envKeysFile: get('DOTENV')}),
